@@ -25,3 +25,15 @@ before_script:
 script:
   - julia build_tarballs.jl
 
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for quinnj/MbedTLSBuilder; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: bTkkILCjIUmNftWaWns5BEvNAcw3MwPPTOMGsyVQJqvpPDVXHhIem8kqH2QcQLahGbwZkqXReHV2uxidDY3A2ss8TtXe/avYNv90Zg2wbaJkt1uMb+5dXccT5e+Bgk4H5YyyMhD0tp19Gs8WMH8Kn931WI6vf+nY+QXDmo6gZziUUL9wjsAPPeHN2Chof9T1mcz8iNl80uvNbRbBsLyihdx24puabNGx789z7jMD+cc/jvc3LHdbAT7U/8V+HTxXnndeDmCQTECJtaZ35H2JPG3h3hIIxtYJ9Nssiod+lYS96P2ljAALfj0a0pi04gYZzCK7gwuwkclC+VhtW/7dIXrS04STXdzts8Tp4iVdVUs39DbbrPq2IckxZ4ApwSrCsVstfIVwHgHPtCuE08tlZRmd3UrgOTg2T2q9JFN/UCTVncxB7qcp8zEPIxTEvwXCrKbkc/9DNPVLL5ODbUUaJ65GgCkttQHXr+re98dWIPiLy/N3Sk179weSnGIRVnONmBGt5kYu2mJrtUoN1kMJ9yKmxbu1q8JRQeuG0BRpBjTkDd9RP/ml3ZOvWTGhZXHWeSmZ/cNKuJ1nDBI8VJRRs2os6j47H52AfNLEv7wxQIQEN6u8MMFiZIDn6aX4IrTJ6OpnEjthpouFC2zB+1B9GdX6WeKU88iesQN9b+NSecc=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: JuliaDatabases/SQLiteBuilder
+        tags: true
