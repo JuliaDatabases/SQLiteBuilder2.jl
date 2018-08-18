@@ -22,15 +22,7 @@ cd sqlite-autoconf-3240000/
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = [
-    Linux(:powerpc64le, :glibc),
-    Linux(:i686, :musl),
-    Linux(:x86_64, :glibc),
-    Linux(:i686, :glibc),
-    Linux(:armv7l, :glibc, :eabihf),
-    Linux(:aarch64, :glibc),
-    Windows(:x86_64)
-]
+platforms = BinaryBuilder.supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
